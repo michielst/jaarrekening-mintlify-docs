@@ -1,71 +1,76 @@
 ---
 title: Introduction
-description: "Welcome to the home of your new documentation"
+description: "Welcome to the Jaarrekening.be developer documentation"
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.png"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.png"
-  alt="Hero Dark"
-/>
 
-## Setting up
+## Welcome to the Jaarrekening.be API
 
-The first step to world-class documentation is setting up your editing environments.
+This documentation helps you interact with our API to access financial, legal, and structural data about all Belgian enterprises. You’ll find endpoints for enterprise profiles, annual reports, directors, ratios, and investments — all powered by official sources.
+
+## Get Started
+
+Everything starts with an API token. You’ll need this to authenticate with our endpoints.
 
 <CardGroup cols={2}>
   <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
+    title="Get an API Token"
+    icon="key"
+    href="https://jaarrekening.be/nl/settings/api-tokens"
   >
-    Get your docs set up locally for easy development
+    Sign in and create a personal or team API token to start making requests.
   </Card>
   <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
+    title="Explore the API"
+    icon="magnifying-glass"
+    href="/api-reference/introduction"
   >
-    Preview your changes before you push to make sure they're perfect
+    Browse available endpoints, try them out, and see example responses live.
   </Card>
 </CardGroup>
 
-## Make it yours
+## Developer Tools
 
-Update your docs to your brand and add valuable content for the best user conversion.
+Our API is documented with the OpenAPI 3.1 spec, fully integrated with Mintlify's API playground.
 
 <CardGroup cols={2}>
   <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
+    title="Authentication"
+    icon="lock"
+    href="/api-reference/introduction#authentication"
   >
-    Customize your docs to your company's colors and brands
+    Learn how to use Bearer tokens securely in every request.
   </Card>
   <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
+    title="Reference Enterprise Data"
+    icon="building"
+    href="/api-reference/endpoint/get-enterprises"
   >
-    Automatically generate endpoints from an OpenAPI spec
+    Query thousands of enterprises with filters and pagination.
   </Card>
   <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/content/components/accordions"
+    title="Track Directors & Financials"
+    icon="briefcase"
+    href="/api-reference/endpoint/get-enterprises-{search}-directors"
   >
-    Build interactive features and designs to guide your users
+    Get director and investment data via structured annual reports.
   </Card>
   <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
+    title="Financial Ratios & Credit Risk"
+    icon="chart-line"
+    href="/api-reference/endpoint/get-enterprises-{search}"
   >
-    Check out our showcase of our favorite documentation
+    Understand solvability, EBITDA, and other financial indicators.
   </Card>
 </CardGroup>
+
+## Questions?
+
+We're here to help.  
+📬 Reach out at [contact@jaarrekening.be](mailto:contact@jaarrekening.be)
+
+---
+
+<Footer>
+  Jaarrekening.be — Developed in Ghent, Belgium 🇧🇪
+</Footer>

@@ -1,33 +1,20 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: 'Access Belgian enterprise data including financials, directors, and participations.'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  To use this API, you must authenticate using a Bearer token created via your account settings on Jaarrekening.be.
 </Note>
 
 ## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Welcome to the official API documentation for **Jaarrekening.be** — the trusted source for Belgian enterprise data.  
+This API provides programmatic access to company information, financial figures, legal representatives, and investments based on official annual reports.
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+The API is built using the [OpenAPI 3.1 specification](https://mintlify.com/docs/api-playground/openapi/setup) and fully supports Mintlify’s interactive playground.
 
-## Authentication
+## Base URL
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+```txt
+https://jaarrekening.be/api/v1/
