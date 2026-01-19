@@ -294,7 +294,26 @@
                     "slug": "ELECTRABEL",
                     "name": "ELECTRABEL",
                     "number": "0403.170.701",
+                    "url": "https://jaarrekening.be/nl/ELECTRABEL/0403.170.701",
                     "start_date": "1905-08-08T00:00:00.000000Z",
+                    "end_date": null,
+                    "language": {
+                      "code": "1",
+                      "description": "Frans"
+                    },
+                    "juridical_form": {
+                      "code": "14",
+                      "description": "Naamloze vennootschap"
+                    },
+                    "juridical_situation": {
+                      "code": "0",
+                      "description": "Normale toestand"
+                    },
+                    "main_activity": {
+                      "nace_code": "35111",
+                      "description": "Productie van elektriciteit door thermische centrales",
+                      "group": "BTW-activiteiten"
+                    },
                     "municipality_nl": "Brussel",
                     "municipality_fr": "Bruxelles",
                     "zipcode": "1000",
@@ -6238,6 +6257,243 @@
                           "specification": null
                         }
                       ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/enterprises/{search}/investors": {
+      "get": {
+        "description": "Get companies that have invested in this enterprise (shareholders).",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "path",
+            "description": "Enterprise number or slug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of investors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "enterprise_number": "0200.362.210",
+                      "name": "in BW Association Intercommunale",
+                      "slug": "in-bw-association-intercommunale",
+                      "municipality": "Nijvel",
+                      "shares": 10208,
+                      "shares_percentage": "0.3747",
+                      "specification": "Held directly"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/enterprises/{search}/activities": {
+      "get": {
+        "description": "Get all NACE2025 activities for an enterprise.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "path",
+            "description": "Enterprise number or slug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of activities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "nace_code": "84130",
+                      "description": "Openbaar bestuur op het gebied van het bedrijfsleven",
+                      "group": "RSZ-activiteiten",
+                      "classification": "Hoofdactiviteit"
+                    },
+                    {
+                      "nace_code": "68121",
+                      "description": "Ontwikkeling van residentiële bouwprojecten",
+                      "group": "BTW-activiteiten",
+                      "classification": "Nevenactiviteit"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/enterprises/{search}/establishments": {
+      "get": {
+        "description": "Get all establishments (branches/locations) for an enterprise.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "path",
+            "description": "Enterprise number or slug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of establishments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "establishment_number": "2.251.273.097",
+                      "start_date": "2015-12-01",
+                      "name": "VENECO",
+                      "address": {
+                        "street_nl": "Panhuisstraat",
+                        "street_fr": "Panhuisstraat",
+                        "house_number": "1",
+                        "box": "",
+                        "zipcode": "9070",
+                        "municipality_nl": "Destelbergen",
+                        "municipality_fr": "Destelbergen",
+                        "country_nl": "België",
+                        "country_fr": "Belgique"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/enterprises/{search}/publications": {
+      "get": {
+        "description": "Get official gazette publications (Belgisch Staatsblad) for an enterprise. Results are paginated.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "path",
+            "description": "Enterprise number or slug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of publications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "title": "STATUTEN (VERTALING, CORDINATIE, OVERIGE WIJZIGINGEN, )",
+                      "date": "2024-04-02",
+                      "attachment_url": "https://www.ejustice.just.fgov.be/tsv_pdf/2024/04/02/24054500.pdf"
+                    },
+                    {
+                      "title": "ONTSLAGEN - BENOEMINGEN",
+                      "date": "2024-01-05",
+                      "attachment_url": "https://www.ejustice.just.fgov.be/tsv_pdf/2024/01/05/24004777.pdf"
+                    }
+                  ],
+                  "per_page": 25,
+                  "current_page": 1,
+                  "next_page_url": "https://jaarrekening.be/api/v1/enterprises/0403.170.701/publications?page=2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/enterprises/{search}/lookalikes": {
+      "get": {
+        "description": "Get similar companies based on various criteria.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "path",
+            "description": "Enterprise number or slug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Type of similarity",
+            "schema": {
+              "type": "string",
+              "enum": ["general", "size", "location", "nearby", "revenue", "age", "growth", "profitability", "risk", "directors", "liquidity", "solvability", "ebitda", "cashflow", "debt", "assets"],
+              "default": "general"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of similar companies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "enterprise_number": "0400.101.937",
+                      "name": "PUBLIGANDA",
+                      "slug": "publiganda",
+                      "municipality": "Brussel",
+                      "type": "general",
+                      "score": "0.60"
                     }
                   ]
                 }

@@ -26,7 +26,12 @@
               "api-reference/endpoint/get-enterprises-{search}",
               "api-reference/endpoint/get-enterprises-{search}-financials",
               "api-reference/endpoint/get-enterprises-{search}-directors",
-              "api-reference/endpoint/get-enterprises-{search}-investments"
+              "api-reference/endpoint/get-enterprises-{search}-investments",
+              "api-reference/endpoint/get-enterprises-{search}-investors",
+              "api-reference/endpoint/get-enterprises-{search}-activities",
+              "api-reference/endpoint/get-enterprises-{search}-establishments",
+              "api-reference/endpoint/get-enterprises-{search}-publications",
+              "api-reference/endpoint/get-enterprises-{search}-lookalikes"
             ]
           }
         ]
