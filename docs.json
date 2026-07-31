@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "willow",
+  "theme": "mint",
   "name": "Jaarrekening.be API Docs",
   "colors": {
     "primary": "#006AD4",
