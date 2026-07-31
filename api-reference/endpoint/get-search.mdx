@@ -1,0 +1,25 @@
+---
+title: 'Search'
+openapi: 'GET /search'
+---
+
+<Note>
+  This is the endpoint to use when a person is typing a company name. It is the
+  same search engine that powers the search box on jaarrekening.be, so it
+  tolerates typos, ignores word order, and matches the last word as a prefix.
+
+  `GET /enterprises` matches exactly instead. Searching `colruit group` there
+  returns nothing, because no company name contains that exact text. Here it
+  returns **Colruyt Group**, the company the user meant.
+</Note>
+
+## Which endpoint should I use?
+
+| You have | Use |
+| --- | --- |
+| Free text a user typed | `GET /search` |
+| An exact name or enterprise number | `GET /enterprises/{search}` |
+| A filter and you want to page through results | `GET /enterprises` |
+
+Once you have a `number` from this endpoint, pass it to any of the
+`/enterprises/{search}/…` endpoints to pull financials, directors and the rest.

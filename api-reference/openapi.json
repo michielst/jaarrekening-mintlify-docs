@@ -19,18 +19,128 @@
     }
   ],
   "paths": {
-    "/enterprises": {
+    "/search": {
       "get": {
-        "description": "List enterprises with optional search by name or number.",
+        "summary": "Search enterprises",
+        "description": "Fuzzy company search, the same engine that powers the search box on jaarrekening.be. Tolerates typos, ignores word order and matches the last word as a prefix, so partial input while a user is still typing resolves to the right company.\n\nUse this endpoint to turn what a user typed into an enterprise number. Use `GET /enterprises` instead when you already have an exact name or number and want a filterable, paginated list.\n\nPurely numeric input is matched against the enterprise number rather than the name. Separators are ignored, so `BE0867441056`, `0867.446.056` and `0867 446 056` are equivalent. Results are ranked by relevance and are not paginated.",
         "parameters": [
           {
             "name": "search",
             "in": "query",
-            "description": "Search by enterprise name or number",
+            "required": true,
+            "description": "What the user typed. A company name, part of a name, or an enterprise number. Minimum 2 characters.",
+            "schema": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 200
+            },
+            "example": "colruit group"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Number of results to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 10
+            },
+            "example": 10
+          },
+          {
+            "name": "countries",
+            "in": "query",
+            "required": false,
+            "description": "Comma separated ISO country codes to narrow results to, for example `BE,FR`. This only ever narrows: it cannot grant access to data your token does not already cover.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "BE"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching enterprises, most relevant first. An empty `data` array means no match.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "slug": "colruyt-group",
+                      "name": "Colruyt Group",
+                      "number": "0400.378.485",
+                      "country": "BE",
+                      "logo": "https://jaarrekening.be/storage/logos/NmqDDBzAyOcsAHc4LpVdVgMb74CozdYKapJbfYkg.jpg",
+                      "url": "https://jaarrekening.be/nl/be/colruyt-group/0400.378.485",
+                      "municipality_nl": "Halle",
+                      "municipality_fr": "Halle",
+                      "zipcode": "1500",
+                      "juridical_situation": 0
+                    },
+                    {
+                      "slug": "colruyt-group-foundation",
+                      "name": "Colruyt Group Foundation",
+                      "number": "0753.616.160",
+                      "country": "BE",
+                      "logo": null,
+                      "url": "https://jaarrekening.be/nl/be/colruyt-group-foundation/0753.616.160",
+                      "municipality_nl": "Halle",
+                      "municipality_fr": "Halle",
+                      "zipcode": "1500",
+                      "juridical_situation": 0
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation failed, for example a `search` shorter than 2 characters or a `limit` above 50.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "The search field is required.",
+                  "errors": {
+                    "search": [
+                      "The search field is required."
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/enterprises": {
+      "get": {
+        "description": "List enterprises, optionally narrowed by an exact name or number match.\n\nThe `search` parameter here matches exactly: a multi-word value must appear in the company name as a contiguous, correctly spelled substring, and a numeric value is matched as a prefix of the enterprise number. It does not tolerate typos or reordered words. For free text a user typed, use `GET /search` instead.",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Exact name or number to match. See the description above for how matching works.",
             "schema": {
               "type": "string"
             },
             "example": "Elec"
+          },
+          {
+            "name": "countries",
+            "in": "query",
+            "description": "Comma separated ISO country codes to narrow results to, for example `BE,FR`. This only ever narrows: it cannot grant access to data your token does not already cover.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "BE"
           }
         ],
         "responses": {
